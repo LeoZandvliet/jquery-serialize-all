@@ -4,6 +4,10 @@ A jQuery Plugin / Extension designed to overcome a shortcoming in [jQuery Serial
 
 Include **empty / unselected** `input[type=radio]`, `input[type=checkbox]` and `select[multiple]` elements alongside standard jQuery .serialize() data. Useful in the case where you need to also report empty form fields back to a web backend on the QueryString.
 
+### Example
+
+An example of the plugin can be found at (https://mikeirvingweb.github.io/jquery-serialize-all/)
+
 ### Installation
 
 ➕ simply add an include to the plugin file `jquery-serialize-all.js`, after the jQuery include.
