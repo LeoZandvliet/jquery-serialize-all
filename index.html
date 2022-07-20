@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <title>jQuery Serialize All - Example</title>
+        <link rel="stylesheet" href="example-includes/css/stylesheet.css" />
+        <script src="example-includes/js/jquery-3.6.0.min.js"></script>
+        <script src="src/jquery-serialize-all.js"></script>
+        <script src="example-includes/js/example-scripts.js"></script>
+    </head>
+    <body>
+        <h1>jQuery Serialize All - Example</h1>
+
+        <p>Written by <a href="https://www.mike-irving.co.uk/">Mike Irving</a>. Source Code available at <a href="https://github.com/mikeirvingweb/jquery-serialize-all">GitHub</a>.</p>
+
+        <form name="testForm">
+            <h2>Regular fields</h2>
+            <p>Some regular fields, that would work with just <a href="https://api.jquery.com/serialize/">.serialize()</a></p>
+            <div>
+                <label for="textField">Text</label>
+                <input type="text" name="textField" id="textField" value="example text">
+            </div>
+
+            <div>
+                <label for="numberField">Number</label>
+                <input type="number" name="numberField" id="numberField" value="5">
+            </div>
+
+            <div>
+                <label for="checkboxField">Checkbox (checked)</label>
+                <input type="checkbox" name="checkboxField" id="checkboxField" value="cbvalue" checked>
+            </div>
+
+            <div>
+                <label>Radio Buttons (with one selected): </label>
+                <label for="radioField1">1</label>
+                <input type="radio" name="radioField" id="radioField1" value="1" checked>
+                <label for="radioField2">2</label>
+                <input type="radio" name="radioField" id="radioField2" value="2">
+                <label for="radioField3">3</label>
+                <input type="radio" name="radioField" id="radioField3" value="3">
+            </div>
+
+            <div>
+                <label for="selectSingleField">Select (single)</label>
+                <select name="selectSingleField" id="selectSingleField">
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="4">Four</option>
+                    <option value="5">Five</option>
+                </select>
+            </div>
+
+            <h2>Empty fields</h2>
+            <p>Some 'empty' fields, that would <strong class="red">not</strong> work with just <a href="https://api.jquery.com/serialize/">.serialize()</a></p>
+
+            <div>
+                <label for="checkboxFieldEmpty">Checkbox (not checked)</label>
+                <input type="checkbox" name="checkboxFieldEmpty" id="checkboxFieldEmpty" value="cbvalueempty">
+            </div>
+
+            <div>
+                <label>Radio Buttons (with none selected): </label>
+                <label for="radioFieldEmpty1">1</label>
+                <input type="radio" name="radioFieldEmpty" id="radioFieldEmpty1" value="1">
+                <label for="radioFieldEmpty2">2</label>
+                <input type="radio" name="radioFieldEmpty" id="radioFieldEmpty2" value="2">
+                <label for="radioFieldEmpty3">3</label>
+                <input type="radio" name="radioFieldEmpty" id="radioFieldEmpty3" value="3">
+            </div>
+
+            <div>
+                <label for="selectMultpleField">Select (multiple - with non selected)</label>
+                <select multiple name="selectMultpleField" id="selectMultpleField">
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="4">Four</option>
+                    <option value="5">Five</option>
+                </select>
+            </div>
+
+        </form>
+
+        <h2>Results</h2>
+
+        <p>Click button to Compare, results will show below:</p>
+
+        <button type="button" onclick="Compare()">Compare serialize() and .serializeAll()</button>
+
+        <div id="results"></div>
+    </body>
+</html>
