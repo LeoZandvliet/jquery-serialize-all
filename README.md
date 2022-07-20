@@ -6,7 +6,7 @@ Include **empty / unselected** `input[type=radio]`, `input[type=checkbox]` and `
 
 ### Example
 
-An example of the plugin can be found at (https://mikeirvingweb.github.io/jquery-serialize-all/)
+An example of the plugin can be found at https://mikeirvingweb.github.io/jquery-serialize-all/
 
 ### Installation
 
