@@ -25,4 +25,4 @@ Include **empty / unselected** `input[type=radio]`, `input[type=checkbox]` and `
 
 ### Author
 
-Written by Mike Irving. © 2022.
+Written by Mik © 2022
