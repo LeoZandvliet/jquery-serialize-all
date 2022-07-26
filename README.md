@@ -10,12 +10,12 @@ Include **empty / unselected** `input[type=radio]`, `input[type=checkbox]` and `
 
 ### Installation
 
-➕ simply add an include to the plugin file `jquery-serialize-all.js`, after the jQuery include.
+➕ Add an include to the plugin file `jquery-serialize-all.js`, after the jQuery include.
 
 `<script src="src/jquery-serialize-all.js"></script>`
 
 ### Usage
-🧑‍💻Simply use `.serializeAll()` instead of `.serialize()` in your code.
+🧑‍💻 Simply use `.serializeAll()` instead of `.serialize()` in your code.
 
 `var serializeAllResults = $("form[name='myform']").serializeAll();`
 
