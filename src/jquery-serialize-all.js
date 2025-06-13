@@ -2,45 +2,39 @@
 (function ($) {
 
     $.fn.serializeAll = function () {
-        var serialized = this.serialize(), serializedSplit = serialized.split("&"), empty = "";
+        var serialized = this.serialize(), empty = "";
 
-        this.each(function () {
+        // add a map function as original jQuery.serialize() for collection of form, or form elements
+        this.map(function(){
+            // Can add propHook for "elements" to filter or add form elements
+            let elements = jQuery.prop( this, "elements" );
+            return elements ? jQuery.makeArray( elements ) : this;
+        }).each(function () {
+            if(!this.name)
+                return;
 
-            jQuery(this).find(
-                "input[name][type=checkbox]:not(:checked)"
-            ).each(function () {
-                empty += (empty !== "" ? "&" : "") + this.name + "=";
-            });
+            if(this.tagName === 'INPUT'){
+                // some frameworks add a hidden field with an 'uncheck value', we don't want to override those
+                if((this.type === 'checkbox' || this.type === 'radio') && this.checked === false){
+                    let checkName = '&' + encodeURIComponent(this.name) + '='; // jQuery.serialize() encodes the names !
 
-            jQuery(this).find(
-                "input[name][type=radio]:not(:checked)"
-            ).each(function () {
-                var includeField = true, checkName = this.name;
+                    // exclude duplicates
+                    if(('&' + serialized).indexOf(checkName) !== -1){
+                        return;
+                    }
 
-                jQuery(serializedSplit).each(function () {
-                    if (this.split("=")[0] == checkName)
-                        includeField = false;
-                });
+                    // exclude duplicates
+                    if(('&' + empty).indexOf(checkName) !== -1){
+                        return;
+                    }
 
-                var emptySplit = empty.split("&");
-
-                jQuery(emptySplit).each(function () {
-                    if (this.split("=")[0] == checkName)
-                        includeField = false;
-                });
-
-                if (includeField) // exclude duplicates
-                    empty += (empty !== "" ? "&" : "") + this.name + "=";
-            });
-
-            jQuery(this).find(
-                "select[name][multiple]"
-            ).each(function () {
-                if (jQuery(this).find("option:selected").length === 0) {
                     empty += (empty !== "" ? "&" : "") + this.name + "=";
                 }
-            });
-
+            }else if(this.tagName === 'SELECT'){
+                if(this.multiple === true && jQuery(this).find("option:selected").length === 0){
+                    empty += (empty !== "" ? "&" : "") + this.name + "=";
+                }
+            }
         });
 
         return serialized + ((serialized !== "" && empty !== "") ? "&" : "") + empty;
