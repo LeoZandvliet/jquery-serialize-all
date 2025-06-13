@@ -23,7 +23,7 @@
             <p>Some regular fields, that would work with just <a href="https://api.jquery.com/serialize/">.serialize()</a></p>
             <div>
                 <label for="textField">Text</label>
-                <input type="text" name="textField" id="textField" value="example text">
+                <input type="text" name="product[textField]" id="textField" value="example text">
             </div>
 
             <div>
@@ -33,7 +33,8 @@
 
             <div>
                 <label for="checkboxField">Checkbox (checked)</label>
-                <input type="checkbox" name="checkboxField" id="checkboxField" value="cbvalue" checked>
+                <input type="hidden" name="product[checkboxField]" id="uncheckboxField" value="0">
+                <input type="checkbox" name="product[checkboxField]" id="checkboxField" value="cbvalue" checked>
             </div>
 
             <div>
